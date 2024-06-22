@@ -1,3 +1,4 @@
+using Contracts;
 using WebStore.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,8 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 {
+    app.ConfigureExceptionHandling(app.Services.GetRequiredService<ILoggerManager>());
+
     app.UseSwagger();
     app.UseSwaggerUI(opts => opts.SwaggerEndpoint("/swagger/v1/swagger.json", "Web Store API v1"));
 }
