@@ -10,11 +10,11 @@ public class OrderDetailsConfiguration : IEntityTypeConfiguration<OrderDetails>
     {
         builder.HasKey(od => new { od.OrderId, od.ProductId });
 
-        //builder.HasData(
-        //[
-        //    new OrderDetails { OrderId = 1, ProductId = 1, Quantity = 1 },
-        //    new OrderDetails { OrderId = 1, ProductId = 2, Quantity = 2 },
-        //    new OrderDetails { OrderId = 2, ProductId = 3, Quantity = 3 }
-        //]);
+        builder.HasData(
+        [
+            new OrderDetails { OrderId = 1, ProductId = 1, Quantity = 1 },
+            new OrderDetails { OrderId = 1, ProductId = 2, Quantity = 2 },
+            new OrderDetails { OrderId = 2, ProductId = 3, Quantity = 3 }
+        ]);
     }
 }
