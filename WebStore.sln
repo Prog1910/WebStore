@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Cont
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{23D1B088-B293-4B2F-9FE8-5BB56731AEA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{9C10E24F-3B75-45E4-924F-E40E989FD5BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{9C10E24F-3B75-45E4-924F-E40E989FD5BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{F551D028-4AE7-4C12-98D7-FF4B70E0A7F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CBE6E4AA-C751-43F3-AB25-3E3AF7802DD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71F880F5-EE1A-4949-94D6-ACC5D6DBD7D5} = {CBE6E4AA-C751-43F3-AB25-3E3AF7802DD6}
+		{85C6A15D-9903-40CC-A73F-5871A849A857} = {F551D028-4AE7-4C12-98D7-FF4B70E0A7F9}
+		{23D1B088-B293-4B2F-9FE8-5BB56731AEA8} = {CBE6E4AA-C751-43F3-AB25-3E3AF7802DD6}
+		{9C10E24F-3B75-45E4-924F-E40E989FD5BC} = {F551D028-4AE7-4C12-98D7-FF4B70E0A7F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E35EF49A-2F94-49F9-ACA8-706D3452AEEE}
