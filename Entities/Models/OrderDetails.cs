@@ -4,9 +4,6 @@ namespace Entities.Models;
 
 public class OrderDetails
 {
-    [Column("OrderDetailsId")]
-    public int Id { get; set; }
-
     public int Quantity { get; set; }
 
     [ForeignKey(nameof(Order))]
