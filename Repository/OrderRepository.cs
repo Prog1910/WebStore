@@ -10,12 +10,7 @@ internal sealed class OrderRepository : RepositoryBase<Order>, IOrderRepository
     public OrderRepository(RepositoryContext repositoryContext) : base(repositoryContext)
     { }
 
-    public void CreateForCustomer(string customer, Order order)
-    {
-        order.Customer = customer;
-
-        Create(order);
-    }
+    public new void Create(Order order) => base.Create(order);
 
     public async Task<PagedList<Order>> GetAllForCustomer(string customer, OrderParameters parameters, bool trackChanges)
     {
@@ -24,5 +19,8 @@ internal sealed class OrderRepository : RepositoryBase<Order>, IOrderRepository
         return PagedList<Order>.ToPagedList(items, pageNumber: parameters.PageNumber, pageSize: parameters.PageSize);
     }
 
-    private new void Delete(Order order) => Delete(order);
+    public async Task<Order> GetForCustomerById(string customer, int id, bool trackChanges)
+        => await FindByCondintion(o => o.Customer.Equals(customer, StringComparison.OrdinalIgnoreCase), trackChanges).SingleOrDefaultAsync();
+
+    public new void Delete(Order order) => base.Delete(order);
 }

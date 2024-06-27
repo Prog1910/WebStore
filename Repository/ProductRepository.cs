@@ -19,5 +19,8 @@ internal sealed class ProductRepository : RepositoryBase<Product>, IProductRepos
         return PagedList<Product>.ToPagedList(items, pageNumber: parameters.PageNumber, pageSize: parameters.PageSize);
     }
 
+    public async Task<Product> GetByIdAsync(int id, bool trackChanges)
+        => await FindByCondintion(p => p.Id == id, trackChanges).SingleOrDefaultAsync();
+
     public void Remove(Product product) => Remove(product);
 }
