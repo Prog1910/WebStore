@@ -5,6 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 {
     builder.Services.ConfigureLogging();
+    builder.Services.ConfigureRepositoryManager();
+    builder.Services.ConfigureSqlContext(builder.Configuration);
 
     builder.Services.ConfigureSwagger();
 }
