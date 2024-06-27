@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using NLog;
 using Repository;
+using Service;
+using Service.Contracts;
 
 namespace WebStore.Extensions;
 
@@ -29,4 +31,10 @@ public static class ServiceExtensions
                 Version = "v1",
                 Title = "Web Store API"
             }));
+
+    public static void ConfigureServiceManager(this IServiceCollection services)
+        => services.AddScoped<IServiceManager, ServiceManager>();
+
+    public static void ConfigureMapping(this IServiceCollection services)
+        => services.AddAutoMapper(typeof(Program));
 }
