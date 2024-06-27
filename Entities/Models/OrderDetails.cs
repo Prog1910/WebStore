@@ -5,15 +5,14 @@ namespace Entities.Models;
 
 public class OrderDetails
 {
-    public int Quantity { get; set; }
-
-    [Key]
     [ForeignKey(nameof(Order))]
     public int OrderId { get; set; }
 
-    [Key]
     [ForeignKey(nameof(Product))]
     public int ProductId { get; set; }
+
+    [Required(ErrorMessage = "Quantity is required.")]
+    public int? Quantity { get; set; }
 
     public Product? Product { get; set; }
     public Order? Order { get; set; }
