@@ -31,10 +31,6 @@ namespace WebStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CustomerId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
@@ -42,13 +38,11 @@ namespace WebStore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CustomerId = 1
+                            Id = 1
                         },
                         new
                         {
-                            Id = 2,
-                            CustomerId = 2
+                            Id = 2
                         });
                 });
 

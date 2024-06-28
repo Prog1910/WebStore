@@ -12,8 +12,8 @@ using Repository;
 namespace WebStore.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240628091528_DatabaseCreation")]
-    partial class DatabaseCreation
+    [Migration("20240628095759_InitialData")]
+    partial class InitialData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,13 +34,19 @@ namespace WebStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CustomerId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1
+                        },
+                        new
+                        {
+                            Id = 2
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.OrderDetails", b =>
@@ -60,6 +66,26 @@ namespace WebStore.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrdersDetails");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderId = 1,
+                            ProductId = 1,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            OrderId = 1,
+                            ProductId = 2,
+                            Quantity = 2
+                        },
+                        new
+                        {
+                            OrderId = 2,
+                            ProductId = 3,
+                            Quantity = 3
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Product", b =>
@@ -82,6 +108,26 @@ namespace WebStore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Laptop",
+                            Price = 999.99000000000001
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Smartphone",
+                            Price = 499.99000000000001
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Tablet",
+                            Price = 299.99000000000001
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.OrderDetails", b =>

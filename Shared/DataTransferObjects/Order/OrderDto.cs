@@ -2,4 +2,4 @@
 
 namespace Shared.DataTransferObjects.Order;
 
-public record OrderDto(int Id, int CustomerId, IEnumerable<OrderDetailsDto> OrderDetailsDtos);
+public record OrderDto(int Id, IEnumerable<OrderDetailsDto> OrderDetailsDtos);

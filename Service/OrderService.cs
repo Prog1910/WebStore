@@ -31,29 +31,29 @@ public class OrderService : IOrderService
         return _mapper.Map<OrderDto>(orderForDb);
     }
 
-    public async Task<IEnumerable<OrderDto>> GetAllForCustomerAsync(int customerId, OrderParameters parameters, bool trackChanges)
+    public async Task<IEnumerable<OrderDto>> GetAllAsync(OrderParameters parameters, bool trackChanges)
     {
-        var ordersFromDb = await _repository.Order.GetAllForCustomer(customerId, parameters, trackChanges);
+        var ordersFromDb = await _repository.Order.GetAll(parameters, trackChanges);
 
         return _mapper.Map<IEnumerable<OrderDto>>(ordersFromDb);
     }
 
-    public async Task<OrderDto> GetForCustomerByIdAsync(int customerId, int id, bool trackChanges)
+    public async Task<OrderDto> GetByIdAsync(int id, bool trackChanges)
     {
-        var orderFromDb = await TryGetOrderForCustomerByIdAsync(customerId, id, trackChanges);
+        var orderFromDb = await TryGetOrderByIdAsync(id, trackChanges);
 
         return _mapper.Map<OrderDto>(orderFromDb);
     }
 
-    public async Task DeleteForCustomerAsync(int customerId, int id, bool trackChanges)
+    public async Task DeleteAsync(int id, bool trackChanges)
     {
-        var orderFromDb = await TryGetOrderForCustomerByIdAsync(customerId, id, trackChanges);
+        var orderFromDb = await TryGetOrderByIdAsync(id, trackChanges);
 
         _repository.Order.Delete(orderFromDb);
         await _repository.SaveAsync();
     }
 
-    private async Task<Order> TryGetOrderForCustomerByIdAsync(int customerId, int id, bool trackChanges)
-        => await _repository.Order.GetForCustomerById(customerId, id, trackChanges)
-            ?? throw new OrderNotFoundException(customerId, id);
+    private async Task<Order> TryGetOrderByIdAsync(int id, bool trackChanges)
+        => await _repository.Order.GetById(id, trackChanges)
+            ?? throw new OrderNotFoundException(id);
 }

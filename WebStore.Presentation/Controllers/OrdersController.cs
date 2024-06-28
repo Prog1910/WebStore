@@ -6,7 +6,7 @@ using WebStore.Presentation.ActionFilters;
 
 namespace WebStore.Presentation.Controllers;
 
-[Route("api/customers/{customerId:int}/[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class OrdersController : ControllerBase
 {
@@ -16,33 +16,33 @@ public class OrdersController : ControllerBase
 
     [HttpPost]
     [ServiceFilter(typeof(ValidationFilterAttribute))]
-    public async Task<IActionResult> Create(int customerId, [FromBody] OrderForCreationDto order)
+    public async Task<IActionResult> Create([FromBody] OrderForCreationDto order)
     {
         var createdOrder = await _services.OrderService.CreateAsync(order);
 
-        return CreatedAtRoute("GetOrderForCustomerById", new { customerId, createdOrder.Id }, createdOrder);
+        return CreatedAtRoute("GetOrderById", new { createdOrder.Id }, createdOrder);
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll(int customerId, [FromQuery] OrderParameters parameters)
+    public async Task<IActionResult> GetAll([FromQuery] OrderParameters parameters)
     {
-        var orders = await _services.OrderService.GetAllForCustomerAsync(customerId, parameters, trackChanges: false);
+        var orders = await _services.OrderService.GetAllAsync(parameters, trackChanges: false);
 
         return Ok(orders);
     }
 
-    [HttpGet("{id:int}", Name = "GetOrderForCustomerById")]
-    public async Task<IActionResult> GetById(int customerId, int id)
+    [HttpGet("{id:int}", Name = "GetOrderById")]
+    public async Task<IActionResult> GetById(int id)
     {
-        var order = await _services.OrderService.GetForCustomerByIdAsync(customerId, id, trackChanges: false);
+        var order = await _services.OrderService.GetByIdAsync(id, trackChanges: false);
 
         return Ok(order);
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Delete(int customerId, int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        await _services.OrderService.DeleteForCustomerAsync(customerId, id, trackChanges: false);
+        await _services.OrderService.DeleteAsync(id, trackChanges: false);
 
         return NoContent();
     }
