@@ -2,6 +2,6 @@
 
 public sealed class OrderNotFoundException : NotFoundException
 {
-    public OrderNotFoundException(string customer, int id) : base($"Order with id: {id} and customer: {customer} not found.")
+    public OrderNotFoundException(int customerId, int id) : base($"Order with id: {id} for customer with Id: {customerId} not found.")
     { }
 }
