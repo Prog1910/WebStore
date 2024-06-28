@@ -14,11 +14,11 @@ namespace WebStore.Migrations
         {
             migrationBuilder.InsertData(
                 table: "Orders",
-                columns: new[] { "OrderId", "Customer" },
+                columns: new[] { "OrderId", "CustomerId" },
                 values: new object[,]
                 {
-                    { 1, "John Doe" },
-                    { 2, "Jane Smith" }
+                    { 1, 1 },
+                    { 2, 2 }
                 });
 
             migrationBuilder.InsertData(
