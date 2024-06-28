@@ -13,7 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.ConfigureSwagger();
 }
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(WebStore.Presentation.AssemnblyReference).Assembly);
 
 var app = builder.Build();
 

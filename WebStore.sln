@@ -19,11 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{D3D96E74-2402-4ED4-BA41-85E7A981C064}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{DEE8658A-131E-467C-9CA9-DFDC9033126C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{DEE8658A-131E-467C-9CA9-DFDC9033126C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Contracts", "Service.Contracts\Service.Contracts.csproj", "{6C5064E4-BC97-4AF7-AA6D-DA45DAA1008E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Contracts", "Service.Contracts\Service.Contracts.csproj", "{6C5064E4-BC97-4AF7-AA6D-DA45DAA1008E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{972FC85B-451A-4765-8861-DEB1794854EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Presentation", "WebStore.Presentation\WebStore.Presentation.csproj", "{ADF3FB8E-74FD-4593-A3C9-52E5AB65B6E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{6C5064E4-BC97-4AF7-AA6D-DA45DAA1008E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C5064E4-BC97-4AF7-AA6D-DA45DAA1008E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C5064E4-BC97-4AF7-AA6D-DA45DAA1008E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF3FB8E-74FD-4593-A3C9-52E5AB65B6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF3FB8E-74FD-4593-A3C9-52E5AB65B6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF3FB8E-74FD-4593-A3C9-52E5AB65B6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF3FB8E-74FD-4593-A3C9-52E5AB65B6E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
