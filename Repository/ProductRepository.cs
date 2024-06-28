@@ -10,7 +10,7 @@ internal sealed class ProductRepository : RepositoryBase<Product>, IProductRepos
     public ProductRepository(RepositoryContext repositoryContext) : base(repositoryContext)
     { }
 
-    public void Add(Product product) => Create(product);
+    public void Add(Product product) => base.Create(product);
 
     async Task<PagedList<Product>> IProductRepository.GetAllAsync(ProductParameters parameters, bool trackChanges)
     {
@@ -22,5 +22,5 @@ internal sealed class ProductRepository : RepositoryBase<Product>, IProductRepos
     public async Task<Product> GetByIdAsync(int id, bool trackChanges)
         => await FindByCondintion(p => p.Id == id, trackChanges).SingleOrDefaultAsync();
 
-    public void Remove(Product product) => Remove(product);
+    public void Remove(Product product) => base.Delete(product);
 }
