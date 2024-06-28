@@ -40,14 +40,14 @@ public class ProductService : IProductService
 
     public async Task<ProductDto> GetByIdAsync(int id, bool trackChanges)
     {
-        Product productFromDb = await TryGetProductByIdAsync(id, trackChanges);
+        var productFromDb = await TryGetProductByIdAsync(id, trackChanges);
 
         return _mapper.Map<ProductDto>(productFromDb);
     }
 
     public async Task RemoveAsync(int id, bool trackChanges)
     {
-        Product productFromDb = await TryGetProductByIdAsync(id, trackChanges);
+        var productFromDb = await TryGetProductByIdAsync(id, trackChanges);
 
         _repository.Product.Remove(productFromDb);
         await _repository.SaveAsync();
