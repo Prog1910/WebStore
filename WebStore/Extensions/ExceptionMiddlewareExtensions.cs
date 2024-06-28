@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities.ErrorModels;
+using Entities.Exceptions.NotFound;
 using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
 
@@ -22,6 +23,7 @@ public static class ExceptionMiddlewareExtensions
                 {
                     context.Response.StatusCode = contextFeature.Error switch
                     {
+                        NotFoundException => StatusCodes.Status404NotFound,
                         _ => StatusCodes.Status500InternalServerError,
                     };
 
