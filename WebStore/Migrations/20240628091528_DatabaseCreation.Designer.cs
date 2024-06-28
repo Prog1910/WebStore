@@ -12,7 +12,7 @@ using Repository;
 namespace WebStore.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240628083224_DatabaseCreation")]
+    [Migration("20240628091528_DatabaseCreation")]
     partial class DatabaseCreation
     {
         /// <inheritdoc />

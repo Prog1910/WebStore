@@ -12,6 +12,7 @@ public class OrderDetails
     public int ProductId { get; set; }
 
     [Required(ErrorMessage = "Quantity is required.")]
+    [Range(0, int.MaxValue, ErrorMessage = "Quantity can't be lower than zero.")]
     public int? Quantity { get; set; }
 
     public Product? Product { get; set; }

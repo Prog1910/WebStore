@@ -12,5 +12,6 @@ public class Product
     public string? Name { get; set; }
 
     [Required(ErrorMessage = "Price is required.")]
+    [Range(0, int.MaxValue, ErrorMessage = "Price can't be lower than zero.")]
     public double? Price { get; set; }
 }
