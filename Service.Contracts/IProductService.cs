@@ -5,7 +5,7 @@ namespace Service.Contracts;
 
 public interface IProductService
 {
-    Task AddAsync(ProductForCreationDto productDto);
+    Task<ProductDto> AddAsync(ProductForCreationDto productDto);
 
     Task<IEnumerable<ProductDto>> GetAllAsync(ProductParameters parameters, bool trackChanges);
 

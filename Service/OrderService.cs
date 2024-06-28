@@ -21,12 +21,14 @@ public class OrderService : IOrderService
         _mapper = mapper;
     }
 
-    public async Task CreateAsync(OrderForCreationDto order)
+    public async Task<OrderDto> CreateAsync(OrderForCreationDto order)
     {
         var orderForDb = _mapper.Map<Order>(order);
 
         _repository.Order.Create(orderForDb);
         await _repository.SaveAsync();
+
+        return _mapper.Map<OrderDto>(orderForDb);
     }
 
     public async Task<IEnumerable<OrderDto>> GetAllForCustomerAsync(string customer, OrderParameters parameters, bool trackChanges)

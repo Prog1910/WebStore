@@ -21,12 +21,14 @@ public class ProductService : IProductService
         _mapper = mapper;
     }
 
-    public async Task AddAsync(ProductForCreationDto product)
+    public async Task<ProductDto> AddAsync(ProductForCreationDto product)
     {
         var productForDb = _mapper.Map<Product>(product);
 
         _repository.Product.Add(productForDb);
         await _repository.SaveAsync();
+
+        return _mapper.Map<ProductDto>(productForDb);
     }
 
     public async Task<IEnumerable<ProductDto>> GetAllAsync(ProductParameters parameters, bool trackChanges)
