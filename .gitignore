@@ -3,6 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+/WebStore/internal_logs/
+
+
 # dotenv files
 .env
 
