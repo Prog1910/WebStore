@@ -1,3 +1,5 @@
-﻿namespace Shared.DataTransferObjects.Order;
+﻿using Shared.DataTransferObjects.OrderDetails;
 
-public record OrderForCreationDto(int Id, string Customer, IEnumerable<OrderDetailsForCreationDto> OrderDetailsDtos);
+namespace Shared.DataTransferObjects.Order;
+
+public record OrderForCreationDto(IEnumerable<OrderDetailsForCreationDto> OrderDetailsDtos);

@@ -1,3 +1,3 @@
 ﻿namespace Shared.DataTransferObjects.OrderDetails;
 
-public record OrderDetailsForCreationDto(int Id, int Quantity);
+public record OrderDetailsForCreationDto(int Quantity);
