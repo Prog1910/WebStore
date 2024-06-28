@@ -6,8 +6,8 @@ using WebStore.Presentation.ActionFilters;
 
 namespace WebStore.Presentation.Controllers;
 
-[ApiController]
 [Route("api/customers/{customerId:int}/[controller]")]
+[ApiController]
 public class OrdersController : ControllerBase
 {
     private readonly IServiceManager _services;
@@ -31,7 +31,7 @@ public class OrdersController : ControllerBase
         return Ok(orders);
     }
 
-    [HttpGet("id:int", Name = "GetOrderForCustomerById")]
+    [HttpGet("{id:int}", Name = "GetOrderForCustomerById")]
     public async Task<IActionResult> GetById(int customerId, int id)
     {
         var order = await _services.OrderService.GetForCustomerByIdAsync(customerId, id, trackChanges: false);
@@ -39,7 +39,7 @@ public class OrdersController : ControllerBase
         return Ok(order);
     }
 
-    [HttpDelete("id:int")]
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteById(int customerId, int id)
     {
         await _services.OrderService.DeleteForCustomerAsync(customerId, id, trackChanges: false);
