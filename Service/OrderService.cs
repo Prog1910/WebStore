@@ -25,6 +25,11 @@ public class OrderService : IOrderService
     {
         var orderForDb = _mapper.Map<Order>(order);
 
+        foreach (var orderDetails in orderForDb.OrderDetails)
+        {
+            orderDetails.OrderId = orderForDb.Id;
+        }
+
         _repository.Order.Create(orderForDb);
         await _repository.SaveAsync();
 
