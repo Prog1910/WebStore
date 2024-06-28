@@ -12,7 +12,7 @@ using Repository;
 namespace WebStore.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240627070844_DatabaseCreation")]
+    [Migration("20240628083224_DatabaseCreation")]
     partial class DatabaseCreation
     {
         /// <inheritdoc />
@@ -34,9 +34,9 @@ namespace WebStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Customer")
+                    b.Property<int?>("CustomerId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
