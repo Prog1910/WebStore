@@ -2,6 +2,7 @@
 using Service.Contracts;
 using Shared.DataTransferObjects.Order;
 using Shared.RequestFeatures;
+using WebStore.Presentation.ActionFilters;
 
 namespace WebStore.Presentation.Controllers;
 
@@ -14,6 +15,7 @@ public class OrdersController : ControllerBase
     public OrdersController(IServiceManager services) => _services = services;
 
     [HttpPost]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
     public async Task<IActionResult> Create(string customer, [FromBody] OrderForCreationDto order)
     {
         var createdOrder = await _services.OrderService.CreateAsync(order);

@@ -2,6 +2,7 @@
 using Service.Contracts;
 using Shared.DataTransferObjects.Product;
 using Shared.RequestFeatures;
+using WebStore.Presentation.ActionFilters;
 
 namespace WebStore.Presentation.Controllers;
 
@@ -14,6 +15,7 @@ public class ProductsController : ControllerBase
     public ProductsController(IServiceManager services) => _services = services;
 
     [HttpPost]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
     public async Task<IActionResult> Add([FromBody] ProductForCreationDto product)
     {
         var addedProduct = await _services.ProductService.AddAsync(product);

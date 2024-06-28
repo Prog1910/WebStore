@@ -1,4 +1,5 @@
 using Contracts;
+
 using WebStore.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.ConfigureSqlContext(builder.Configuration);
     builder.Services.ConfigureServiceManager();
     builder.Services.ConfigureMapping();
-
+    builder.Services.ConfigureModelStateFilter();
+    builder.Services.ConfigureActionFilters();
     builder.Services.ConfigureSwagger();
 }
 

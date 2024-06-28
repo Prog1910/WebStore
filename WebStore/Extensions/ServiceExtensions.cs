@@ -1,11 +1,13 @@
 ﻿using Contracts;
 using LoggerService;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using NLog;
 using Repository;
 using Service;
 using Service.Contracts;
+using WebStore.Presentation.ActionFilters;
 
 namespace WebStore.Extensions;
 
@@ -37,4 +39,10 @@ public static class ServiceExtensions
 
     public static void ConfigureMapping(this IServiceCollection services)
         => services.AddAutoMapper(typeof(Program));
+
+    public static void ConfigureModelStateFilter(this IServiceCollection services)
+        => services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
+
+    public static void ConfigureActionFilters(this IServiceCollection services)
+        => services.AddScoped<ValidationFilterAttribute>();
 }
