@@ -7,7 +7,7 @@ using WebStore.Presentation.ActionFilters;
 namespace WebStore.Presentation.Controllers;
 
 [ApiController]
-[Route("api/customers/{customer:int}/[controller]")]
+[Route("api/customers/{customerId:int}/[controller]")]
 public class OrdersController : ControllerBase
 {
     private readonly IServiceManager _services;
@@ -16,11 +16,11 @@ public class OrdersController : ControllerBase
 
     [HttpPost]
     [ServiceFilter(typeof(ValidationFilterAttribute))]
-    public async Task<IActionResult> Create(string customer, [FromBody] OrderForCreationDto order)
+    public async Task<IActionResult> Create(int customerId, [FromBody] OrderForCreationDto order)
     {
         var createdOrder = await _services.OrderService.CreateAsync(order);
 
-        return CreatedAtRoute("GetOrderForCustomerById", new { customer, createdOrder.Id }, createdOrder);
+        return CreatedAtRoute("GetOrderForCustomerById", new { customerId, createdOrder.Id }, createdOrder);
     }
 
     [HttpGet]
