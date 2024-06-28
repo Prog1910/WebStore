@@ -31,9 +31,9 @@ namespace WebStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<string>("Customer")
                         .IsRequired()
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -43,12 +43,12 @@ namespace WebStore.Migrations
                         new
                         {
                             Id = 1,
-                            CustomerId = 1
+                            Customer = "John Doe"
                         },
                         new
                         {
                             Id = 2,
-                            CustomerId = 2
+                            Customer = "Jane Smith"
                         });
                 });
 
